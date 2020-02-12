@@ -13,19 +13,20 @@
 FROM thomasweise/docker-pandoc
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
-RUN apt-get clean &&\
-    apt-get update &&\
-    apt-get autoclean -y &&\
-    apt-get autoremove -y &&\
-    apt-get update &&\
+RUN apt-get update &&\
     cd /tmp/ &&\
 # install calibre
     wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin &&\
 # clean up all temporary files
-    apt-get clean &&\
-    apt-get autoclean -y &&\
-    apt-get autoremove -y &&\
-    apt-get clean &&\
+    apt-get clean -y || true&&\
     rm -rf /tmp/* /var/tmp/* &&\
     rm -rf /var/lib/apt/lists/* &&\
-    rm -f /etc/ssh/ssh_host_*
+    rm -f /etc/ssh/ssh_host_* &&\
+    find /usr/share/doc -depth -type f ! -name copyright -delete &&\
+    find /usr/share/doc -type f -name "*.pdf" -delete &&\
+    find /usr/share/doc -type f -name "*.gz" -delete &&\
+    find /usr/share/doc -type f -name "*.tex" -delete &&\
+    find /usr/share/doc -type d -empty -delete || true &&\
+    rm -rf /usr/share/man &&\
+    mkdir -p /usr/share/man &&\
+    mkdir -p /usr/share/doc
