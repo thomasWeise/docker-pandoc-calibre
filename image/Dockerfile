@@ -16,9 +16,16 @@ MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 RUN apt-get update &&\
     cd /tmp/ &&\
 # install calibre
-    wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin &&\
+    wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
+    chmod 777 ./linux-installer.sh &&\
+    ./linux-installer.sh &&\
+# remove unneeded calibre stuff
+    rm -rf /opt/calibre/translations/ &&\
+    rm -rf /opt/calibre/plugins/wayland* &&\
+    rm -rf /opt/calibre/lib/libQt* &&\
+    rm -rf /opt/calibre/libexec &&\
 # clean up all temporary files
-    apt-get clean -y || true&&\
+    apt-get clean -y &&\
     rm -rf /tmp/* /var/tmp/* &&\
     rm -rf /var/lib/apt/lists/* &&\
     rm -f /etc/ssh/ssh_host_* &&\
