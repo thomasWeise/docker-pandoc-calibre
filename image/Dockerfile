@@ -18,9 +18,10 @@ RUN apt-get update &&\
 # install calibre
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
     chmod 777 ./linux-installer.sh &&\
+    ./linux-installer.sh ||\
     ./linux-installer.sh &&\
-    rm -rf ./linux-installer.sh || true &&\
-    rm -rf ./calibre-installer-cache || true &&\
+    rm -rf ./linux-installer.sh &&\
+    rm -rf ./calibre-installer-cache &&\
 # remove unneeded calibre stuff
     rm -rf /opt/calibre/translations/ &&\
     rm -rf /opt/calibre/plugins/wayland* &&\
@@ -37,7 +38,7 @@ RUN apt-get update &&\
     find /usr/share/doc -type f -name "*.pdf" -delete &&\
     find /usr/share/doc -type f -name "*.gz" -delete &&\
     find /usr/share/doc -type f -name "*.tex" -delete &&\
-    find /usr/share/doc -type d -empty -delete || true &&\
+    find /usr/share/doc -type d -empty -delete &&\
     rm -rf /usr/share/man &&\
     mkdir -p /usr/share/man &&\
     mkdir -p /usr/share/doc
