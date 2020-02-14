@@ -19,6 +19,8 @@ RUN apt-get update &&\
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
     chmod 777 ./linux-installer.sh &&\
     ./linux-installer.sh &&\
+    rm -rf ./linux-installer.sh || true &&\
+    rm -rf ./calibre-installer-cache || true &&\
 # remove unneeded calibre stuff
     rm -rf /opt/calibre/translations/ &&\
     rm -rf /opt/calibre/plugins/wayland* &&\
