@@ -26,7 +26,6 @@ RUN apt-get update &&\
 # remove unneeded calibre stuff
     rm -rf /opt/calibre/translations/ &&\
     rm -rf /opt/calibre/plugins/wayland* &&\
-    rm -rf /opt/calibre/lib/libQt* &&\
     rm -rf /opt/calibre/libexec &&\
     rm -rf /opt/calibre/lib/python2.7/site-packages/calibre/gui* &&\
 # clean up all temporary files
