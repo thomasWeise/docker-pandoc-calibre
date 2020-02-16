@@ -29,7 +29,6 @@ RUN apt-get update &&\
     rm -rf /opt/calibre/lib/libQt* &&\
     rm -rf /opt/calibre/libexec &&\
     rm -rf /opt/calibre/lib/python2.7/site-packages/calibre/gui* &&\
-    rm -rf /opt/calibre/lib/python2.7/site-packages/PyQt* &&\
 # clean up all temporary files
     apt-get clean -y &&\
     rm -rf /tmp/* /var/tmp/* &&\
