@@ -14,16 +14,8 @@ FROM thomasweise/docker-pandoc
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN apt-get update &&\
-    apt-get install -f -y --no-install-recommends xz-utils &&\
+    apt-get install -f -y --no-install-recommends xz-utils libgl1 &&\
     cd /tmp/ &&\
-# try to get a minimal version of libgl1-mesa-glx to work
-# using the method described in https://askubuntu.com/questions/74523
-    mkdir /tmp/deb &&\
-    cd /tmp/deb &&\
-    apt-get download libgl1-mesa-glx &&\
-    dpkg --force-all -i *.deb &&\
-    cd /tmp/ &&\
-    rm -rf /tmp/deb &&\
 # install calibre
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
     chmod 777 ./linux-installer.sh &&\
