@@ -14,7 +14,9 @@ FROM thomasweise/docker-pandoc
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN apt-get update &&\
-    apt-get install -f -y --no-install-recommends xz-utils &&\
+    apt-get install -f -y --no-install-recommends \
+      libgl1-mesa-glx \
+      xz-utils &&\
     cd /tmp/ &&\
 # install calibre
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
