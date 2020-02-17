@@ -25,6 +25,10 @@ RUN apt-get update &&\
     ./linux-installer.sh &&\
     rm -rf ./linux-installer.sh &&\
     rm -rf ./calibre-installer-cache &&\
+    rm -rf /opt/calibre/translations/ &&\
+    rm -rf /opt/calibre/plugins/wayland* &&\
+    rm -rf /opt/calibre/libexec &&\
+    rm -rf /opt/calibre/lib/python2.7/site-packages/calibre/gui* &&\
 # clean up all temporary files
     apt-get clean -y &&\
     rm -rf /tmp/* /var/tmp/* &&\
