@@ -23,10 +23,6 @@ RUN apt-get update &&\
     ./linux-installer.sh &&\
     rm -rf ./linux-installer.sh &&\
     rm -rf ./calibre-installer-cache &&\
-# remove unneeded calibre stuff
-    rm -rf /opt/calibre/translations/ &&\
-    rm -rf /opt/calibre/plugins/wayland* &&\
-    rm -rf /opt/calibre/libexec &&\
 # clean up all temporary files
     apt-get clean -y &&\
     rm -rf /tmp/* /var/tmp/* &&\
