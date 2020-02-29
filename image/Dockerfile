@@ -14,7 +14,7 @@ FROM thomasweise/docker-pandoc
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN apt-get update &&\
-    apt-get install -f -y --no-install-recommends xz-utils libgl1 &&\
+    apt-get install -f -y --no-install-recommends libgl1 &&\
     cd /tmp/ &&\
 # install calibre
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
@@ -39,6 +39,7 @@ RUN apt-get update &&\
     find /usr/share/doc -type f -name "*.gz" -delete &&\
     find /usr/share/doc -type f -name "*.tex" -delete &&\
     find /usr/share/doc -type d -empty -delete &&\
+    rm -rf /usr/bin/calibre-uninstall &&\
     rm -rf /usr/share/man &&\
     mkdir -p /usr/share/man &&\
     mkdir -p /usr/share/doc
