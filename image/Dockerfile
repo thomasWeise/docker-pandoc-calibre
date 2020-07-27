@@ -10,17 +10,21 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM thomasweise/docker-pandoc
+FROM thomasweise/docker-pandoc:1.0
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
-RUN apt-get update &&\
+RUN echo "Initial Update." &&\
+    apt-get update &&\
+    echo "Installing libgl1." &&\
     apt-get install -f -y --no-install-recommends libgl1 &&\
     cd /tmp/ &&\
 # install calibre
+    echo "Installing calibre." &&\
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
     chmod 777 ./linux-installer.sh &&\
     ./linux-installer.sh ||\
     ./linux-installer.sh &&\
+    echo "Deletion of useless files." &&\
     rm -rf ./linux-installer.sh &&\
     rm -rf ./calibre-installer-cache &&\
     rm -rf /opt/calibre/translations/ &&\
@@ -30,6 +34,7 @@ RUN apt-get update &&\
     rm -rf /opt/calibre/resources/quick_start &&\
     rm -rf /opt/calibre/resources/editor-help &&\
 # clean up all temporary files
+    echo "Final cleanup." &&\
     apt-get clean -y &&\
     rm -rf /tmp/* /var/tmp/* &&\
     rm -rf /var/lib/apt/lists/* &&\
@@ -42,4 +47,5 @@ RUN apt-get update &&\
     rm -rf /usr/bin/calibre-uninstall &&\
     rm -rf /usr/share/man &&\
     mkdir -p /usr/share/man &&\
-    mkdir -p /usr/share/doc
+    mkdir -p /usr/share/doc &&\
+    echo "All done."
