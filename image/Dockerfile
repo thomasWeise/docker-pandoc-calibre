@@ -22,8 +22,7 @@ RUN echo "Initial Update." &&\
     echo "Installing calibre." &&\
     wget -nv https://download.calibre-ebook.com/linux-installer.sh &&\
     chmod 777 ./linux-installer.sh &&\
-    ./linux-installer.sh ||\
-    ./linux-installer.sh &&\
+    (./linux-installer.sh || ./linux-installer.sh) &&\
     echo "Deletion of useless files." &&\
     rm -rf ./linux-installer.sh &&\
     rm -rf ./calibre-installer-cache &&\
