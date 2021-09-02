@@ -10,7 +10,7 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM thomasweise/docker-pandoc:2.0
+FROM thomasweise/docker-pandoc:3.0
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN echo "Initial Update." &&\
@@ -32,6 +32,8 @@ RUN echo "Initial Update." &&\
     rm -rf /opt/calibre/lib/python2.7/site-packages/calibre/gui* &&\
     rm -rf /opt/calibre/resources/quick_start &&\
     rm -rf /opt/calibre/resources/editor-help &&\
+    rm -rf /opt/calibre/ebook-viewer &&\
+    rm -rf /opt/calibre/plugins/platforms/libqway* &&\
 # clean up all temporary files
     echo "Final cleanup." &&\
     apt-get clean -y &&\
