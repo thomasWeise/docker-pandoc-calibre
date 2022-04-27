@@ -10,7 +10,7 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM thomasweise/docker-pandoc:4.0
+FROM thomasweise/docker-pandoc:4.1
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN echo "Initial Update." &&\
