@@ -16,7 +16,7 @@ MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 RUN echo "Initial Update." &&\
     apt-get update &&\
     echo "Installing libgl1." &&\
-    apt-get install -f -y --no-install-recommends libegl1 libopengl0 &&\
+    apt-get install -f -y --no-install-recommends libegl1 libopengl0 libglx0 libxkbcommon0 &&\
     cd /tmp/ &&\
 # install calibre
     echo "Installing calibre." &&\
@@ -28,12 +28,10 @@ RUN echo "Initial Update." &&\
     rm -rf ./calibre-installer-cache &&\
     rm -rf /opt/calibre/translations/ &&\
     rm -rf /opt/calibre/plugins/wayland* &&\
-    rm -rf /opt/calibre/libexec &&\
     rm -rf /opt/calibre/lib/python2.7/site-packages/calibre/gui* &&\
     rm -rf /opt/calibre/resources/quick_start &&\
     rm -rf /opt/calibre/resources/editor-help &&\
     rm -rf /opt/calibre/ebook-viewer &&\
-    rm -rf /opt/calibre/plugins/platforms/libqway* &&\
 # clean up all temporary files
     echo "Final cleanup." &&\
     apt-get clean -y &&\
