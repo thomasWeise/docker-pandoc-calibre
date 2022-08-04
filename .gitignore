@@ -4,3 +4,4 @@
 .Ruserdata
 docker-pandoc-calibre.Rproj
 *.Rproj
+.project

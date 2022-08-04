@@ -10,13 +10,13 @@
 # software components inside the image are under the respective
 # licenses chosen by their respective copyright holders.
 #
-FROM thomasweise/docker-pandoc:4.1
+FROM thomasweise/docker-pandoc:5.0
 MAINTAINER Thomas Weise <tweise@hfuu.edu.cn>
 
 RUN echo "Initial Update." &&\
     apt-get update &&\
     echo "Installing libgl1." &&\
-    apt-get install -f -y --no-install-recommends libgl1 &&\
+    apt-get install -f -y --no-install-recommends libegl1 libopengl0 &&\
     cd /tmp/ &&\
 # install calibre
     echo "Installing calibre." &&\
